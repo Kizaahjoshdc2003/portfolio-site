@@ -1,0 +1,135 @@
+{
+    "profileImage": "images/profile_1790263337504.png",
+    "name": "Kizaah Josh V. Dela Cruz",
+    "greeting": "Hello, I'm",
+    "roles": "Full-Stack Developer, Technical Support, Project Manager",
+    "heroDescription": "Crafting elegant solutions at the intersection of cloud architecture, full-stack development, and DevOps engineering. Turning complex problems into seamless digital experiences.",
+    "stat1Number": "2",
+    "stat1Label": "Years Experience",
+    "stat2Number": "20",
+    "stat2Label": "Projects Delivered",
+    "stat3Number": "12",
+    "stat3Label": "Happy Clients",
+    "badgeText": "Available for opportunities",
+    "codeCardTitle": "architect.ts",
+    "codeCardContent": "interface Developer {\n  name: \"Kizaah Josh V. Dela Cruz\";\n  role: \"Full-Stack & Cloud\";\n  languages: string[];\n  passion: \"Building resilient systems\";\n}\n\nconst engineer: Developer = {\n  name: \"Kizaah Josh V. Dela Cruz\",\n  role: \"Full-Stack & Cloud\",\n  languages: [\n    \"TypeScript\", \"Python\",\n    \"Go\", \"Rust\"\n  ],\n  passion: \"Building resilient systems\"\n};",
+    "aboutP1": "I'm a passionate IT professional with <strong>8+ years</strong> of experience building scalable, resilient systems. My journey started with tinkering in Linux terminals and evolved into architecting cloud-native solutions for enterprise clients.",
+    "aboutP2": "I thrive at the intersection of <strong>development and operations</strong>, bridging the gap between elegant code and robust infrastructure. Whether it's designing microservices architectures, optimizing CI/CD pipelines, or mentoring teams — I bring both technical depth and strategic thinking.",
+    "aboutP3": "When I'm not coding, you'll find me contributing to open-source projects, writing technical blog posts, or exploring the latest in AI/ML and Web3 technologies.",
+    "cert1": "",
+    "cert2": "",
+    "cert3": "",
+    "float1": "20+ Projects",
+    "float2": "Full Stack",
+    "skillsCategories": [
+        {
+            "id": "cat_1",
+            "title": "Technical Skills",
+            "tags": "React, Next.js, TypeScript, Vue.js, Tailwind CSS, SASS, Three.js"
+        },
+        {
+            "id": "cat_2",
+            "title": "Backend & Tools",
+            "tags": "MySQL, SMTP (PHPMailer), CyberPanel, Tomorrow.io API, QR Code integration"
+        },
+        {
+            "id": "cat_3",
+            "title": "Core Competencies",
+            "tags": "Full-Stack Web Development, Database Management and Design, Backend Development and System Integration, Technical Support and Issue Resolution"
+        },
+        {
+            "id": "cat_4",
+            "title": "Soft Skills",
+            "tags": "Communication, Problem-Solving, Time Management, Teamwork and Collaboration, Adaptability, Critical Thinking"
+        }
+    ],
+    "projectsList": [
+        {
+            "id": "proj_1",
+            "title": "Inventory Management System (OJT)",
+            "desc": "Web-based inventory system that tracks, assigns, and manages items using QR code scanning; led the OJT team during development.",
+            "tags": "PHP, Laravel, MySQL",
+            "demo": "#",
+            "source": "#"
+        },
+        {
+            "id": "proj_2",
+            "title": "Travel and Tours Customer Booking System",
+            "desc": "Package booking and reservation management, automated email notifications via SMTP, real-time weather forecasting integration for enhanced travel planning, and server administration using CyberPanel.",
+            "tags": "PHP, Laravel, MySQL, SMTP, CyberPanel, Tomorrow.io API",
+            "demo": "#",
+            "source": "#"
+        },
+        {
+            "id": "proj_3",
+            "title": "Student Document Request System",
+            "desc": "Allows students to request official school documents (e.g., transcripts, certificates of enrollment) with automated email notification updates.",
+            "tags": "PHP, HTML, CSS, MySQL, SMTP (PHPMailer)",
+            "demo": "#",
+            "source": "#"
+        },
+        {
+            "id": "proj_4",
+            "title": "TNVS Booking System",
+            "desc": "Web-based Transport Network Vehicle Service platform enabling customer ride bookings and a dedicated dashboard for drivers to manage bookings.",
+            "tags": "HTML, JS, CSS, PHP, MySQL",
+            "demo": "#",
+            "source": "#"
+        }
+    ],
+    "experienceList": [
+        {
+            "id": "exp_1",
+            "date": "2025 — Present",
+            "company": "Massive Integrated Tech Solutions Inc.",
+            "title": "OJT | Full Stack Developer",
+            "desc": "Worked as a full stack developer and team leader, developing web-based systems and coordinating team tasks during the OJT program.\n\nContributed to the development of a B2B Training System and Inventory Management System.\n\nDeveloped full-stack features using PHP, Node.js, React, and Laravel.\n\nBuilt and maintained frontend and backend components, managed database structures, and handled system integration."
+        }
+    ],
+    "email": "kizaahjoshdelacruz@gmail.com",
+    "location": "#100 Mabuhay Street, Area 5, Bagong Silangan, Quezon City",
+    "github": "#",
+    "linkedin": "#",
+    "twitter": "#",
+    "devto": "#",
+    "skillsFrontend": "React, Next.js, TypeScript, Vue.js, Tailwind CSS, SASS, Three.js",
+    "skillsBackend": "MySQL, SMTP (PHPMailer), CyberPanel, Tomorrow.io API, QR Code integration",
+    "skillsCloud": "Full-Stack Web Development, Database Management and Design, Backend Development and System Integration, Technical Support and Issue Resolution",
+    "skillsData": "Communication, Problem-Solving, Time Management, Teamwork and Collaboration, Adaptability, Critical Thinking",
+    "proj1Title": "Inventory Management System (OJT)",
+    "proj1Desc": "Web-based inventory system that tracks, assigns, and manages items using QR code scanning; led the OJT team during development.",
+    "proj1Tags": "PHP, Laravel, MySQL",
+    "proj1Demo": "#",
+    "proj1Source": "#",
+    "proj2Title": "Travel and Tours Customer Booking System",
+    "proj2Desc": "Package booking and reservation management, automated email notifications via SMTP, real-time weather forecasting integration for enhanced travel planning, and server administration using CyberPanel.",
+    "proj2Tags": "PHP, Laravel, MySQL, SMTP, CyberPanel, Tomorrow.io API",
+    "proj2Demo": "#",
+    "proj2Source": "#",
+    "proj3Title": "Student Document Request System",
+    "proj3Desc": "Allows students to request official school documents (e.g., transcripts, certificates of enrollment) with automated email notification updates.",
+    "proj3Tags": "PHP, HTML, CSS, MySQL, SMTP (PHPMailer)",
+    "proj3Demo": "#",
+    "proj3Source": "#",
+    "proj4Title": "TNVS Booking System",
+    "proj4Desc": "Web-based Transport Network Vehicle Service platform enabling customer ride bookings and a dedicated dashboard for drivers to manage bookings.",
+    "proj4Tags": "HTML, JS, CSS, PHP, MySQL",
+    "proj4Demo": "#",
+    "proj4Source": "#",
+    "exp1Date": "2025 — Present",
+    "exp1Title": "OJT | Full Stack Developer",
+    "exp1Company": "Massive Integrated Tech Solutions Inc.",
+    "exp1Desc": "Worked as a full stack developer and team leader, developing web-based systems and coordinating team tasks during the OJT program.\n\nContributed to the development of a B2B Training System and Inventory Management System.\n\nDeveloped full-stack features using PHP, Node.js, React, and Laravel.\n\nBuilt and maintained frontend and backend components, managed database structures, and handled system integration.",
+    "exp2Date": "",
+    "exp2Title": "",
+    "exp2Company": "",
+    "exp2Desc": "",
+    "exp3Date": "",
+    "exp3Title": "",
+    "exp3Company": "",
+    "exp3Desc": "",
+    "exp4Date": "",
+    "exp4Title": "",
+    "exp4Company": "",
+    "exp4Desc": ""
+}

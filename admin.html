@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin — Portfolio Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Architectural Background Canvas -->
+    <div class="ambient-grid-bg" aria-hidden="true">
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Admin Header -->
+    <header class="admin-header glass-nav">
+        <div class="admin-header-inner">
+            <div class="admin-brand">
+                <span class="admin-lock-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </span>
+                <span class="admin-title">Portfolio Admin</span>
+                <span class="admin-badge">Hidden</span>
+            </div>
+            <div class="admin-actions-header">
+                <a href="index.html" class="btn btn-glass btn-sm" id="admin-view-site">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <span>View Site</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span id="toast-message">Changes saved!</span>
+        </div>
+
+        <!-- Sidebar Tabs -->
+        <aside class="admin-sidebar glass-card">
+            <nav class="admin-tabs">
+                <button class="admin-tab active" data-tab="hero" id="tab-hero">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span>Hero</span>
+                </button>
+                <button class="admin-tab" data-tab="about" id="tab-about">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span>About</span>
+                </button>
+                <button class="admin-tab" data-tab="skills" id="tab-skills">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    <span>Skills</span>
+                </button>
+                <button class="admin-tab" data-tab="projects" id="tab-projects">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    <span>Projects</span>
+                </button>
+                <button class="admin-tab" data-tab="experience" id="tab-experience">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Experience</span>
+                </button>
+                <button class="admin-tab" data-tab="contact" id="tab-contact">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>Contact</span>
+                </button>
+                <div class="admin-tab-divider"></div>
+                <button class="admin-tab admin-tab-danger" id="tab-reset" data-action="reset">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    <span>Reset All</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Editor Panels -->
+        <div class="admin-content">
+
+            <!-- ======== HERO PANEL ======== -->
+            <div class="admin-panel active" id="panel-hero">
+                <div class="panel-header">
+                    <h2>Hero Section</h2>
+                    <p>Edit your name, headline, and intro</p>
+                </div>
+                <div class="panel-body glass-card">
+                    <div class="field-group">
+                        <label for="edit-name">Full Name</label>
+                        <input type="text" id="edit-name" data-key="name" placeholder="Kizaah Josh V. Dela Cruz">
+                    </div>
+                    <div class="field-group">
+                        <label for="edit-greeting">Greeting Text</label>
+                        <input type="text" id="edit-greeting" data-key="greeting" placeholder="Hello, I'm">
+                    </div>
+                    <div class="field-group">
+                        <label for="edit-roles">Typing Roles <span class="field-hint">(comma-separated)</span></label>
+                        <input type="text" id="edit-roles" data-key="roles" placeholder="Full-Stack Developer, Cloud Architect, DevOps Engineer">
+                    </div>
+                    <div class="field-group">
+                        <label for="edit-description">Hero Description</label>
+                        <textarea id="edit-description" data-key="heroDescription" rows="4" placeholder="Crafting elegant solutions..."></textarea>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <div class="field-label-row">
+                                <label for="edit-stat1-number">Stat 1 — Number <span class="field-hint">(Empty hides)</span></label>
+                                <button type="button" class="btn-text-clear" onclick="clearField('edit-stat1-number')" title="Clear to hide">Clear</button>
+                            </div>
+                            <input type="number" id="edit-stat1-number" data-key="stat1Number" placeholder="8">
+                        </div>
+                        <div class="field-group">
+                            <label for="edit-stat1-label">Stat 1 — Label</label>
+                            <input type="text" id="edit-stat1-label" data-key="stat1Label" placeholder="Years Experience">
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <div class="field-label-row">
+                                <label for="edit-stat2-number">Stat 2 — Number <span class="field-hint">(Empty hides)</span></label>
+                                <button type="button" class="btn-text-clear" onclick="clearField('edit-stat2-number')" title="Clear to hide">Clear</button>
+                            </div>
+                            <input type="number" id="edit-stat2-number" data-key="stat2Number" placeholder="50">
+                        </div>
+                        <div class="field-group">
+                            <label for="edit-stat2-label">Stat 2 — Label</label>
+                            <input type="text" id="edit-stat2-label" data-key="stat2Label" placeholder="Projects Delivered">
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <div class="field-label-row">
+                                <label for="edit-stat3-number">Stat 3 — Number <span class="field-hint">(Empty hides)</span></label>
+                                <button type="button" class="btn-text-clear" onclick="clearField('edit-stat3-number')" title="Clear to hide">Clear</button>
+                            </div>
+                            <input type="number" id="edit-stat3-number" data-key="stat3Number" placeholder="15">
+                        </div>
+                        <div class="field-group">
+                            <label for="edit-stat3-label">Stat 3 — Label</label>
+                            <input type="text" id="edit-stat3-label" data-key="stat3Label" placeholder="Happy Clients">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-badge">Badge Text <span class="field-hint">(Leave empty to hide badge)</span></label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-badge')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="text" id="edit-badge" data-key="badgeText" placeholder="Available for opportunities">
+                    </div>
+
+                    <!-- Source Code Card Editor -->
+                    <div class="panel-subheading">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <span>Hero Source Code Card (Terminal Window)</span>
+                    </div>
+                    <p class="panel-sub-desc">Customize the terminal code window displayed on the hero section of your portfolio. You can edit the title or any code snippet.</p>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <div class="field-label-row">
+                                <label for="edit-code-title">File Title / Tab Name</label>
+                                <button type="button" class="btn-text-clear" onclick="clearField('edit-code-title')" title="Clear">Clear</button>
+                            </div>
+                            <input type="text" id="edit-code-title" data-key="codeCardTitle" placeholder="architect.ts">
+                        </div>
+                        <div class="field-group" style="display:flex; flex-direction:column; justify-content:center;">
+                            <label>Status on Live Site</label>
+                            <div style="padding-top: 6px;">
+                                <span class="status-indicator-badge" id="status-badge-codecard">Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="code-editor-toolbar">
+                            <label for="edit-code-content" style="margin-bottom: 0;">Code Content <span class="field-hint">(Leave empty to hide code window card)</span></label>
+                            <div class="code-editor-actions">
+                                <button type="button" class="btn-small-ghost" onclick="resetDefaultCodeCard()" title="Restore default TypeScript snippet">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                                    <span>Reset Default Code</span>
+                                </button>
+                                <button type="button" class="btn-text-clear" onclick="clearCodeCard()" title="Clear content to hide code card from site">
+                                    <span>Clear / Hide Card</span>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="edit-code-content" data-key="codeCardContent" class="code-editor-textarea" rows="13" spellcheck="false" placeholder="interface Developer { ... }"></textarea>
+                    </div>
+                </div>
+                <div class="panel-actions">
+                    <button class="btn btn-primary" onclick="saveCurrentPanel('hero')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Save Changes</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ======== ABOUT PANEL ======== -->
+            <div class="admin-panel" id="panel-about">
+                <div class="panel-header">
+                    <h2>About Section</h2>
+                    <p>Edit your bio and certifications</p>
+                </div>
+                <div class="panel-body glass-card">
+                    <div class="field-group">
+                        <label>Profile Photo</label>
+                        <div class="image-upload-area" id="image-upload-area">
+                            <img src="" alt="Preview" class="image-preview" id="image-preview">
+                            <div class="image-upload-placeholder" id="image-upload-placeholder">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                <span>Click to upload or drag & drop</span>
+                                <span class="image-hint">JPG, PNG, WebP — max 2MB</span>
+                            </div>
+                            <input type="file" id="profile-upload" accept="image/jpeg,image/png,image/webp" hidden>
+                        </div>
+                        <div class="field-group" style="margin-top: 12px;">
+                            <label for="edit-profile-image">Or enter image path / URL</label>
+                            <input type="text" id="edit-profile-image" data-key="profileImage" placeholder="images/profile.jpg">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label for="edit-about-p1">Bio — Paragraph 1</label>
+                        <textarea id="edit-about-p1" data-key="aboutP1" rows="3"></textarea>
+                    </div>
+                    <div class="field-group">
+                        <label for="edit-about-p2">Bio — Paragraph 2</label>
+                        <textarea id="edit-about-p2" data-key="aboutP2" rows="3"></textarea>
+                    </div>
+                    <div class="field-group">
+                        <label for="edit-about-p3">Bio — Paragraph 3</label>
+                        <textarea id="edit-about-p3" data-key="aboutP3" rows="3"></textarea>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-cert1">Certification 1</label>
+                            <div class="label-right">
+                                <span class="status-indicator-badge" id="status-badge-cert1">Visible</span>
+                                <button type="button" class="btn-text-clear" onclick="clearField('edit-cert1')" title="Clear to hide">Clear</button>
+                            </div>
+                        </div>
+                        <input type="text" id="edit-cert1" data-key="cert1" placeholder="Leave empty to hide from portfolio">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-cert2">Certification 2</label>
+                            <div class="label-right">
+                                <span class="status-indicator-badge" id="status-badge-cert2">Visible</span>
+                                <button type="button" class="btn-text-clear" onclick="clearField('edit-cert2')" title="Clear to hide">Clear</button>
+                            </div>
+                        </div>
+                        <input type="text" id="edit-cert2" data-key="cert2" placeholder="Leave empty to hide from portfolio">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-cert3">Certification 3</label>
+                            <div class="label-right">
+                                <span class="status-indicator-badge" id="status-badge-cert3">Visible</span>
+                                <button type="button" class="btn-text-clear" onclick="clearField('edit-cert3')" title="Clear to hide">Clear</button>
+                            </div>
+                        </div>
+                        <input type="text" id="edit-cert3" data-key="cert3" placeholder="Leave empty to hide from portfolio">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-float1">Float Badge 1 Text</label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-float1')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="text" id="edit-float1" data-key="float1" placeholder="Leave empty to hide from portfolio">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-float2">Float Badge 2 Text</label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-float2')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="text" id="edit-float2" data-key="float2" placeholder="Leave empty to hide from portfolio">
+                    </div>
+                </div>
+                <div class="panel-actions">
+                    <button class="btn btn-primary" onclick="saveCurrentPanel('about')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Save Changes</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ======== SKILLS PANEL ======== -->
+            <div class="admin-panel" id="panel-skills">
+                <div class="panel-header">
+                    <h2>Skills Section</h2>
+                    <p>Edit tech category titles (e.g. change "Frontend" to "Technical Skills"), add custom skills, or remove categories</p>
+                </div>
+                <div id="skills-categories-editor">
+                    <!-- Dynamic Skill Category Blocks Rendered via JS -->
+                </div>
+                <button type="button" class="btn-add-item" onclick="addSkillCategory()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <span>+ Add New Skill Category</span>
+                </button>
+                <div class="panel-actions">
+                    <button class="btn btn-primary" onclick="saveCurrentPanel('skills')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Save Skills</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ======== PROJECTS PANEL ======== -->
+            <div class="admin-panel" id="panel-projects">
+                <div class="panel-header">
+                    <h2>Projects Section</h2>
+                    <p>Edit project titles, details, add new projects, or remove projects with complete flexibility</p>
+                </div>
+                <div id="projects-editor">
+                    <!-- Dynamic Project Blocks Rendered via JS -->
+                </div>
+                <button type="button" class="btn-add-item" onclick="addNewProject()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <span>+ Add Another Project</span>
+                </button>
+                <div class="panel-actions">
+                    <button class="btn btn-primary" onclick="saveCurrentPanel('projects')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Save All Projects</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ======== EXPERIENCE PANEL ======== -->
+            <div class="admin-panel" id="panel-experience">
+                <div class="panel-header">
+                    <h2>Experience Section</h2>
+                    <p>Edit job titles, companies, add milestones, or remove details with complete flexibility</p>
+                </div>
+                <div id="experience-editor">
+                    <!-- Dynamic Experience Blocks Rendered via JS -->
+                </div>
+                <button type="button" class="btn-add-item" onclick="addNewExperience()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <span>+ Add Another Experience</span>
+                </button>
+                <div class="panel-actions">
+                    <button class="btn btn-primary" onclick="saveCurrentPanel('experience')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Save All Experience</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ======== CONTACT PANEL ======== -->
+            <div class="admin-panel" id="panel-contact">
+                <div class="panel-header">
+                    <h2>Contact & Social</h2>
+                    <p>Edit your contact details and social links</p>
+                </div>
+                <div class="panel-body glass-card">
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-email">Email Address <span class="field-hint">(Leave empty to hide)</span></label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-email')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="email" id="edit-email" data-key="email" placeholder="alex@alexmorgan.dev">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-location">Location <span class="field-hint">(Leave empty to hide)</span></label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-location')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="text" id="edit-location" data-key="location" placeholder="San Francisco, CA">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-github">GitHub URL <span class="field-hint">(Leave empty or # to hide)</span></label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-github')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="url" id="edit-github" data-key="github" placeholder="https://github.com/...">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-linkedin">LinkedIn URL <span class="field-hint">(Leave empty or # to hide)</span></label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-linkedin')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="url" id="edit-linkedin" data-key="linkedin" placeholder="https://linkedin.com/in/...">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-twitter">Twitter / X URL <span class="field-hint">(Leave empty or # to hide)</span></label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-twitter')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="url" id="edit-twitter" data-key="twitter" placeholder="https://x.com/...">
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="edit-devto">Dev.to / Blog URL <span class="field-hint">(Leave empty or # to hide)</span></label>
+                            <button type="button" class="btn-text-clear" onclick="clearField('edit-devto')" title="Clear to hide">Clear</button>
+                        </div>
+                        <input type="url" id="edit-devto" data-key="devto" placeholder="https://dev.to/...">
+                    </div>
+                </div>
+                <div class="panel-actions">
+                    <button class="btn btn-primary" onclick="saveCurrentPanel('contact')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Save Changes</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>
