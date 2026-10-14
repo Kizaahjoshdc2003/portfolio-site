@@ -278,6 +278,16 @@
                         </div>
                         <input type="text" id="edit-float2" data-key="float2" placeholder="Leave empty to hide from portfolio">
                     </div>
+                    <div class="field-group" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle);">
+                        <div class="field-label-row">
+                            <label>About Section Contacts & Transmission Pills</label>
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="switchTab('contact')">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <span>+ Manage Contacts & Socials</span>
+                            </button>
+                        </div>
+                        <p class="field-subtext">Active contact links and social media accounts you configure in the Contact manager will automatically show up as clickable transmission pills in your About section!</p>
+                    </div>
                 </div>
                 <div class="panel-actions">
                     <button class="btn btn-primary" onclick="saveCurrentPanel('about')">
@@ -371,33 +381,21 @@
                         </div>
                         <input type="text" id="edit-location" data-key="location" placeholder="San Francisco, CA">
                     </div>
-                    <div class="field-group">
+                    <!-- Dynamic Flexible Contacts & Social Links -->
+                    <div class="field-group" style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-subtle);">
                         <div class="field-label-row">
-                            <label for="edit-github">GitHub URL <span class="field-hint">(Leave empty or # to hide)</span></label>
-                            <button type="button" class="btn-text-clear" onclick="clearField('edit-github')" title="Clear to hide">Clear</button>
+                            <div>
+                                <label style="font-size: 1.05rem; font-weight: 700; color: var(--white-pure);">Flexible Contacts & Social Media Links</label>
+                                <p class="field-subtext" style="margin-top: 4px;">Add any contact method you want (GitHub, LinkedIn, Twitter/X, Facebook, Instagram, Telegram, WhatsApp, Discord, Email, Phone, etc.). They will show on your portfolio and in the About section!</p>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="addNewSocialLink()">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                <span>+ Add Contact / Social</span>
+                            </button>
                         </div>
-                        <input type="url" id="edit-github" data-key="github" placeholder="https://github.com/...">
-                    </div>
-                    <div class="field-group">
-                        <div class="field-label-row">
-                            <label for="edit-linkedin">LinkedIn URL <span class="field-hint">(Leave empty or # to hide)</span></label>
-                            <button type="button" class="btn-text-clear" onclick="clearField('edit-linkedin')" title="Clear to hide">Clear</button>
+                        <div class="socials-editor-list" id="socials-editor-list">
+                            <!-- Dynamic contact rows rendered by admin.js -->
                         </div>
-                        <input type="url" id="edit-linkedin" data-key="linkedin" placeholder="https://linkedin.com/in/...">
-                    </div>
-                    <div class="field-group">
-                        <div class="field-label-row">
-                            <label for="edit-twitter">Twitter / X URL <span class="field-hint">(Leave empty or # to hide)</span></label>
-                            <button type="button" class="btn-text-clear" onclick="clearField('edit-twitter')" title="Clear to hide">Clear</button>
-                        </div>
-                        <input type="url" id="edit-twitter" data-key="twitter" placeholder="https://x.com/...">
-                    </div>
-                    <div class="field-group">
-                        <div class="field-label-row">
-                            <label for="edit-devto">Dev.to / Blog URL <span class="field-hint">(Leave empty or # to hide)</span></label>
-                            <button type="button" class="btn-text-clear" onclick="clearField('edit-devto')" title="Clear to hide">Clear</button>
-                        </div>
-                        <input type="url" id="edit-devto" data-key="devto" placeholder="https://dev.to/...">
                     </div>
                 </div>
                 <div class="panel-actions">

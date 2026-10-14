@@ -90,9 +90,18 @@ const engineer: Developer = {
             desc: 'Leading cloud migration strategies for Fortune 500 clients. Architected multi-region Kubernetes clusters serving 100M+ requests/day. Reduced infrastructure costs by 40% through auto-scaling optimization.'
         }
     ],
+    socialLinks: [
+        { id: 'soc_1', platform: 'github', label: 'GitHub', url: 'https://github.com/Kizaahjoshdc2003' },
+        { id: 'soc_2', platform: 'linkedin', label: 'LinkedIn', url: '' },
+        { id: 'soc_3', platform: 'email', label: 'Email', url: 'mailto:kizaahjoshdelacruz@gmail.com' },
+        { id: 'soc_4', platform: 'twitter', label: 'Twitter / X', url: '' },
+        { id: 'soc_5', platform: 'telegram', label: 'Telegram', url: '' },
+        { id: 'soc_6', platform: 'whatsapp', label: 'WhatsApp', url: '' },
+        { id: 'soc_7', platform: 'facebook', label: 'Facebook', url: '' }
+    ],
     email: 'kizaahjoshdelacruz@gmail.com',
     location: '#100 Mabuhay Street, Area 5, Bagong Silangan, Quezon City',
-    github: '#', linkedin: '#', twitter: '#', devto: '#'
+    github: 'https://github.com/Kizaahjoshdc2003', linkedin: '#', twitter: '#', devto: '#'
 };
 
 /* ---- State ---- */
@@ -116,6 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderSkillsEditor();
     renderProjectsEditor();
     renderExperienceEditor();
+    renderSocialsEditor();
     initTabs();
     initReset();
     initImageUpload();
@@ -178,6 +188,19 @@ async function loadData() {
                             desc: data[`exp${i}Desc`] || ''
                         });
                     }
+                }
+            }
+
+            // Ensure socialLinks is populated
+            if (!Array.isArray(data.socialLinks) || data.socialLinks.length === 0) {
+                data.socialLinks = [];
+                if (data.github && data.github !== '#') data.socialLinks.push({ id: 'soc_gh', platform: 'github', label: 'GitHub', url: data.github });
+                if (data.linkedin && data.linkedin !== '#') data.socialLinks.push({ id: 'soc_li', platform: 'linkedin', label: 'LinkedIn', url: data.linkedin });
+                if (data.twitter && data.twitter !== '#') data.socialLinks.push({ id: 'soc_tw', platform: 'twitter', label: 'Twitter / X', url: data.twitter });
+                if (data.devto && data.devto !== '#') data.socialLinks.push({ id: 'soc_dev', platform: 'devto', label: 'Dev.to', url: data.devto });
+                if (data.email) data.socialLinks.push({ id: 'soc_em', platform: 'email', label: 'Email', url: `mailto:${data.email}` });
+                if (data.socialLinks.length === 0) {
+                    data.socialLinks = JSON.parse(JSON.stringify(DEFAULTS.socialLinks));
                 }
             }
 
@@ -573,6 +596,159 @@ function syncExperienceFromDom() {
 }
 
 /* ==========================================================================
+   FLEXIBLE CONTACTS & SOCIALS EDITOR
+   ========================================================================== */
+const SOCIAL_PLATFORMS = [
+    { value: 'github', label: 'GitHub' },
+    { value: 'linkedin', label: 'LinkedIn' },
+    { value: 'twitter', label: 'Twitter / X' },
+    { value: 'facebook', label: 'Facebook' },
+    { value: 'instagram', label: 'Instagram' },
+    { value: 'telegram', label: 'Telegram' },
+    { value: 'whatsapp', label: 'WhatsApp' },
+    { value: 'discord', label: 'Discord' },
+    { value: 'youtube', label: 'YouTube' },
+    { value: 'email', label: 'Direct Email (mailto)' },
+    { value: 'phone', label: 'Phone / SMS (tel)' },
+    { value: 'devto', label: 'Dev.to / Blog' },
+    { value: 'medium', label: 'Medium' },
+    { value: 'reddit', label: 'Reddit' },
+    { value: 'website', label: 'Custom Website / Link' }
+];
+
+function renderSocialsEditor() {
+    const container = document.getElementById('socials-editor-list');
+    if (!container) return;
+
+    if (!Array.isArray(data.socialLinks) || data.socialLinks.length === 0) {
+        data.socialLinks = [
+            { id: 'soc_1', platform: 'github', label: 'GitHub', url: 'https://github.com/Kizaahjoshdc2003' },
+            { id: 'soc_2', platform: 'email', label: 'Email', url: 'mailto:kizaahjoshdelacruz@gmail.com' }
+        ];
+    }
+
+    container.innerHTML = data.socialLinks.map((s, idx) => `
+        <div class="project-edit-block" data-social-index="${idx}" style="margin-bottom: 16px;">
+            <div class="project-edit-header">
+                <div class="block-title-group">
+                    <span class="block-num">#${idx + 1}</span>
+                    <strong class="block-title mb-0">${escapeAttr(s.label || s.platform || 'Contact Link')}</strong>
+                    <span class="status-indicator-badge" id="status-badge-soc-${idx}">Active on site</span>
+                </div>
+                <div class="label-right">
+                    <button type="button" class="btn-clear-item" onclick="clearSocialLink(${idx})" title="Clear link to hide from site">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        <span>Clear</span>
+                    </button>
+                    <button type="button" class="btn-delete-item" onclick="deleteSocialLink(${idx})" title="Remove contact completely">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <span>Delete</span>
+                    </button>
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field-group">
+                    <label>Platform / Network</label>
+                    <select class="soc-platform-select" onchange="onSocialPlatformChange(${idx}, this.value)">
+                        ${SOCIAL_PLATFORMS.map(p => `
+                            <option value="${p.value}" ${s.platform === p.value ? 'selected' : ''}>${p.label}</option>
+                        `).join('')}
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label>Display Label <span class="field-hint">(e.g. GitHub, Work WhatsApp)</span></label>
+                    <input type="text" class="soc-label-input" value="${escapeAttr(s.label || '')}" placeholder="Label on button">
+                </div>
+            </div>
+            <div class="field-group" style="margin-top: 8px;">
+                <label>URL / Transmission Value <span class="field-hint">(Leave empty or # to hide)</span></label>
+                <input type="text" class="soc-url-input" value="${escapeAttr(s.url || '')}" placeholder="https://... or mailto:you@domain.com or tel:+123456789">
+            </div>
+        </div>
+    `).join('');
+
+    updateLiveBadges();
+}
+
+function onSocialPlatformChange(idx, val) {
+    const block = document.querySelector(`#socials-editor-list .project-edit-block[data-social-index="${idx}"]`);
+    if (!block) return;
+    const labelInput = block.querySelector('.soc-label-input');
+    if (labelInput && (!labelInput.value.trim() || SOCIAL_PLATFORMS.some(p => p.label === labelInput.value.trim()))) {
+        const found = SOCIAL_PLATFORMS.find(p => p.value === val);
+        if (found) labelInput.value = found.label;
+    }
+    const titleEl = block.querySelector('.block-title');
+    if (titleEl && labelInput) {
+        titleEl.textContent = labelInput.value.trim() || val;
+    }
+    updateLiveBadges();
+}
+window.onSocialPlatformChange = onSocialPlatformChange;
+
+function addNewSocialLink() {
+    syncSocialsFromDom();
+    data.socialLinks.push({
+        id: `soc_${Date.now()}`,
+        platform: 'website',
+        label: 'Custom Link',
+        url: ''
+    });
+    renderSocialsEditor();
+    showToast('✨ Added new contact method! Fill in your link and click Save.');
+
+    const blocks = document.querySelectorAll('#socials-editor-list .project-edit-block');
+    const last = blocks[blocks.length - 1];
+    if (last) {
+        last.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const urlInput = last.querySelector('.soc-url-input');
+        if (urlInput) urlInput.focus();
+    }
+}
+window.addNewSocialLink = addNewSocialLink;
+
+function deleteSocialLink(idx) {
+    syncSocialsFromDom();
+    const s = data.socialLinks[idx];
+    const sName = s?.label || s?.platform || `Contact ${idx + 1}`;
+    if (!confirm(`Delete "${sName}"?\n\nIt will be removed from your portfolio upon saving.`)) return;
+
+    data.socialLinks.splice(idx, 1);
+    renderSocialsEditor();
+    showToast(`🗑️ Deleted "${sName}". Click "Save Changes" to publish.`);
+}
+window.deleteSocialLink = deleteSocialLink;
+
+function clearSocialLink(idx) {
+    const block = document.querySelector(`#socials-editor-list .project-edit-block[data-social-index="${idx}"]`);
+    if (!block) return;
+    block.querySelector('.soc-url-input').value = '';
+    updateLiveBadges();
+    showToast(`Cleared Contact ${idx + 1}. Empty contacts are hidden from the portfolio.`);
+}
+window.clearSocialLink = clearSocialLink;
+
+function syncSocialsFromDom() {
+    const blocks = document.querySelectorAll('#socials-editor-list .project-edit-block');
+    data.socialLinks = Array.from(blocks).map((block, idx) => ({
+        id: `soc_${idx + 1}`,
+        platform: block.querySelector('.soc-platform-select')?.value || 'website',
+        label: block.querySelector('.soc-label-input')?.value.trim() || '',
+        url: block.querySelector('.soc-url-input')?.value.trim() || ''
+    }));
+
+    // Keep legacy single fields in sync with primary matching items if present
+    const gh = data.socialLinks.find(s => s.platform === 'github');
+    if (gh) data.github = gh.url || '';
+    const li = data.socialLinks.find(s => s.platform === 'linkedin');
+    if (li) data.linkedin = li.url || '';
+    const tw = data.socialLinks.find(s => s.platform === 'twitter');
+    if (tw) data.twitter = tw.url || '';
+    const dev = data.socialLinks.find(s => s.platform === 'devto');
+    if (dev) data.devto = dev.url || '';
+}
+
+/* ==========================================================================
    CODE CARD ACTIONS
    ========================================================================== */
 function resetDefaultCodeCard() {
@@ -655,6 +831,8 @@ async function saveCurrentPanel(panelName) {
         if (codeContentEl) {
             data.codeCardContent = codeContentEl.value;
         }
+    } else if (panelName === 'contact') {
+        syncSocialsFromDom();
     }
 
     updateLiveBadges();
@@ -746,6 +924,21 @@ function updateLiveBadges() {
         }
     });
 
+    // Dynamic Socials & Contacts
+    const socBlocks = document.querySelectorAll('#socials-editor-list .project-edit-block');
+    socBlocks.forEach((block, idx) => {
+        const badge = document.getElementById(`status-badge-soc-${idx}`);
+        if (!badge) return;
+        const url = block.querySelector('.soc-url-input')?.value.trim();
+        if (url && url !== '#') {
+            badge.textContent = 'Active on site';
+            badge.className = 'status-indicator-badge badge-active';
+        } else {
+            badge.textContent = 'Hidden (Empty)';
+            badge.className = 'status-indicator-badge badge-hidden';
+        }
+    });
+
     // Certifications 1 to 3
     for (let i = 1; i <= 3; i++) {
         const certInput = document.querySelector(`[data-key="cert${i}"]`);
@@ -800,6 +993,7 @@ function initReset() {
             renderSkillsEditor();
             renderProjectsEditor();
             renderExperienceEditor();
+            renderSocialsEditor();
             updateLiveBadges();
 
             if (serverAvailable) {

@@ -3,24 +3,24 @@
     "name": "Kizaah Josh V. Dela Cruz",
     "greeting": "Hello, I'm",
     "roles": "Full-Stack Developer, Technical Support, Project Manager",
-    "heroDescription": "Crafting elegant solutions at the intersection of cloud architecture, full-stack development, and DevOps engineering. Turning complex problems into seamless digital experiences.",
+    "heroDescription": "An Information Technology student and graduate from Bestlink College of the Philippines with hands-on experience in developing web and database applications through academic projects and professional internships. Skilled in HTML, CSS, PHP, and MySQL, with a strong interest in building efficient and user-friendly systems. Motivated to apply my knowledge in a real-world environment while continuously learning and growing in the IT industry.",
     "stat1Number": "2",
     "stat1Label": "Years Experience",
-    "stat2Number": "20",
+    "stat2Number": "15",
     "stat2Label": "Projects Delivered",
-    "stat3Number": "12",
+    "stat3Number": "10",
     "stat3Label": "Happy Clients",
     "badgeText": "Available for opportunities",
-    "codeCardTitle": "architect.ts",
-    "codeCardContent": "interface Developer {\n  name: \"Kizaah Josh V. Dela Cruz\";\n  role: \"Full-Stack & Cloud\";\n  languages: string[];\n  passion: \"Building resilient systems\";\n}\n\nconst engineer: Developer = {\n  name: \"Kizaah Josh V. Dela Cruz\",\n  role: \"Full-Stack & Cloud\",\n  languages: [\n    \"TypeScript\", \"Python\",\n    \"Go\", \"Rust\"\n  ],\n  passion: \"Building resilient systems\"\n};",
-    "aboutP1": "I'm a passionate IT professional with <strong>8+ years</strong> of experience building scalable, resilient systems. My journey started with tinkering in Linux terminals and evolved into architecting cloud-native solutions for enterprise clients.",
-    "aboutP2": "I thrive at the intersection of <strong>development and operations</strong>, bridging the gap between elegant code and robust infrastructure. Whether it's designing microservices architectures, optimizing CI/CD pipelines, or mentoring teams — I bring both technical depth and strategic thinking.",
-    "aboutP3": "When I'm not coding, you'll find me contributing to open-source projects, writing technical blog posts, or exploring the latest in AI/ML and Web3 technologies.",
+    "codeCardTitle": "developer.json",
+    "codeCardContent": "interface Developer {\n  name: \"Kizaah Josh V. Dela Cruz\";\n  role: \"Full-Stack Web Developer\";\n  languages: string[];\n  passion: \"Building efficient and user-friendly systems\";\n}\n\nconst engineer: Developer = {\n  name: \"Kizaah Josh V. Dela Cruz\",\n  role: \"Full-Stack Web Developer\",\n  languages: [\n    \"PHP\", \"Laravel\", \"React\", \n    \"Node.js\", \"HTML\", \"CSS\", \n    \"JavaScript\", \"MySQL\"\n  ],\n  passion: \"Building efficient and user-friendly systems\"\n};",
+    "aboutP1": "I'm a passionate <strong>Full-Stack Web Developer</strong> and IT student specializing in building responsive web systems and robust database applications. My journey spans from developing core academic projects to leading teams and delivering production-ready platforms during my professional experience.",
+    "aboutP2": "I thrive at the intersection of frontend design and backend architecture, bridging the gap between clean interfaces and solid server-side logic. Whether it's engineering full-stack solutions with Laravel and React, integrating APIs, or managing server hosting with CyberPanel, I bring technical focus and strong problem-solving skills",
+    "aboutP3": "When I'm not coding, you'll find me exploring modern web technologies, refining database schemas, and continuously learning new frameworks to expand my stack",
     "cert1": "",
     "cert2": "",
     "cert3": "",
-    "float1": "20+ Projects",
-    "float2": "Full Stack",
+    "float1": "15+ Projects",
+    "float2": "Full Stack Developer",
     "skillsCategories": [
         {
             "id": "cat_1",
@@ -80,17 +80,62 @@
     "experienceList": [
         {
             "id": "exp_1",
-            "date": "2025 — Present",
+            "date": "2025 — 2026 (April)",
             "company": "Massive Integrated Tech Solutions Inc.",
             "title": "OJT | Full Stack Developer",
             "desc": "Worked as a full stack developer and team leader, developing web-based systems and coordinating team tasks during the OJT program.\n\nContributed to the development of a B2B Training System and Inventory Management System.\n\nDeveloped full-stack features using PHP, Node.js, React, and Laravel.\n\nBuilt and maintained frontend and backend components, managed database structures, and handled system integration."
+        },
+        {
+            "id": "exp_2",
+            "date": "2025 — Present",
+            "company": "Massive Integrated Tech Solutions Inc.",
+            "title": "Software Developer",
+            "desc": "Software Developer with hands-on experience building full-stack web applications, inventory management systems, and optimizing procurement platforms. Skilled in developing efficient backend logic, database management, and leading development tasks to deliver reliable, user-friendly business solutions."
+        }
+    ],
+    "socialLinks": [
+        {
+            "id": "soc_1",
+            "platform": "github",
+            "label": "GitHub",
+            "url": "https://github.com/Kizaahjoshdc2003"
+        },
+        {
+            "id": "soc_2",
+            "platform": "linkedin",
+            "label": "LinkedIn",
+            "url": ""
+        },
+        {
+            "id": "soc_3",
+            "platform": "email",
+            "label": "Email",
+            "url": "mailto:kizaahjoshdelacruz@gmail.com"
+        },
+        {
+            "id": "soc_4",
+            "platform": "instagram",
+            "label": "Instagram",
+            "url": "https://www.instagram.com/joshiwasi/"
+        },
+        {
+            "id": "soc_5",
+            "platform": "facebook",
+            "label": "Facebook",
+            "url": "https://www.facebook.com/delacruz.josh.75"
+        },
+        {
+            "id": "soc_6",
+            "platform": "phone",
+            "label": "Phone",
+            "url": "09949786043"
         }
     ],
     "email": "kizaahjoshdelacruz@gmail.com",
     "location": "#100 Mabuhay Street, Area 5, Bagong Silangan, Quezon City",
-    "github": "#",
-    "linkedin": "#",
-    "twitter": "#",
+    "github": "https://github.com/Kizaahjoshdc2003",
+    "linkedin": "",
+    "twitter": "",
     "devto": "#",
     "skillsFrontend": "React, Next.js, TypeScript, Vue.js, Tailwind CSS, SASS, Three.js",
     "skillsBackend": "MySQL, SMTP (PHPMailer), CyberPanel, Tomorrow.io API, QR Code integration",
@@ -116,14 +161,14 @@
     "proj4Tags": "HTML, JS, CSS, PHP, MySQL",
     "proj4Demo": "#",
     "proj4Source": "#",
-    "exp1Date": "2025 — Present",
+    "exp1Date": "2025 — 2026 (April)",
     "exp1Title": "OJT | Full Stack Developer",
     "exp1Company": "Massive Integrated Tech Solutions Inc.",
     "exp1Desc": "Worked as a full stack developer and team leader, developing web-based systems and coordinating team tasks during the OJT program.\n\nContributed to the development of a B2B Training System and Inventory Management System.\n\nDeveloped full-stack features using PHP, Node.js, React, and Laravel.\n\nBuilt and maintained frontend and backend components, managed database structures, and handled system integration.",
-    "exp2Date": "",
-    "exp2Title": "",
-    "exp2Company": "",
-    "exp2Desc": "",
+    "exp2Date": "2025 — Present",
+    "exp2Title": "Software Developer",
+    "exp2Company": "Massive Integrated Tech Solutions Inc.",
+    "exp2Desc": "Software Developer with hands-on experience building full-stack web applications, inventory management systems, and optimizing procurement platforms. Skilled in developing efficient backend logic, database management, and leading development tasks to deliver reliable, user-friendly business solutions.",
     "exp3Date": "",
     "exp3Title": "",
     "exp3Company": "",

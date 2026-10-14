@@ -115,6 +115,50 @@ function getCategoryIcon(title = '') {
     return `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
 }
 
+/* Helper: Platform Icon by Name / URL */
+function getSocialIcon(platform = '') {
+    const p = String(platform || '').toLowerCase();
+    if (p.includes('github') || p.includes('git')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
+    }
+    if (p.includes('linkedin')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`;
+    }
+    if (p.includes('twitter') || p.includes(' x') || p === 'x') {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+    }
+    if (p.includes('facebook') || p.includes('fb')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`;
+    }
+    if (p.includes('instagram') || p.includes('ig')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`;
+    }
+    if (p.includes('telegram') || p.includes('tg')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.942z"/></svg>`;
+    }
+    if (p.includes('whatsapp') || p.includes('wa')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.386 0 12.031c0 2.122.553 4.182 1.603 5.998L0 24l6.168-1.579c1.76 1.008 3.766 1.642 5.863 1.642 6.645 0 12.031-5.385 12.031-12.032C24.062 5.386 18.676 0 12.031 0zm0 22.012c-1.895 0-3.714-.543-5.267-1.503l-.377-.234-3.666.938.977-3.575-.246-.388c-1.053-1.654-1.611-3.578-1.611-5.219 0-5.504 4.478-9.982 9.982-9.982 5.504 0 9.982 4.478 9.982 9.982 0 5.504-4.478 9.981-9.982 9.981zm5.474-7.466c-.3-.15-1.776-.877-2.052-.977-.275-.1-.476-.15-.676.15s-.777.977-.953 1.178c-.175.2-.351.225-.651.075s-1.267-.467-2.413-1.488c-.892-.795-1.493-1.777-1.669-2.078-.175-.3-.019-.462.131-.611.136-.135.3-.35.45-.526.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525s-.676-1.63-.926-2.233c-.244-.587-.492-.507-.676-.516l-.576-.01c-.2 0-.525.075-.8.375s-1.05 1.026-1.05 2.502 1.075 2.903 1.225 3.104c.15.2 2.115 3.23 5.124 4.53 3.01 1.3 3.01.867 3.56.817.55-.05 1.776-.726 2.026-1.427.25-.701.25-1.302.175-1.427-.075-.125-.275-.2-.575-.35z"/></svg>`;
+    }
+    if (p.includes('discord')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>`;
+    }
+    if (p.includes('youtube') || p.includes('yt')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+    }
+    if (p.includes('email') || p.includes('mail')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`;
+    }
+    if (p.includes('phone') || p.includes('tel') || p.includes('call')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+    }
+    if (p.includes('devto') || p.includes('dev.to') || p.includes('blog') || p.includes('article')) {
+        return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6v4.36h.58c.37 0 .67-.08.87-.25.21-.18.31-.47.31-.88v-2.09c0-.41-.11-.69-.34-.91zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.29 2.72 0 2.24-.02 2.37-.44 3.15zm4.85-3.17c0 .51-.04.52-1.15.52v1.64c1.11 0 1.15.01 1.15.53v.77h-2.76V8.53h2.76v.78c0 .5-.04.52-1.15.52v1.63c1.11 0 1.15.01 1.15.52v.15zm4.91 2.2c-.39.76-.81 1.06-1.52 1.06-.71 0-1.14-.3-1.52-1.06-.21-.42-.23-.58-.23-2.28 0-1.72.02-1.85.23-2.28.39-.76.81-1.07 1.52-1.07s1.13.31 1.52 1.07c.21.43.23.56.23 2.28 0 1.7-.02 1.86-.23 2.28z"/></svg>`;
+    }
+    // Generic link
+    return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+}
+
+
 /* Helper: Syntax Colorizer for Hero Code Window */
 function highlightCode(rawCode) {
     if (!rawCode) return '';
@@ -581,6 +625,62 @@ async function applyAdminData() {
         }
     }
 
+    /* ---- FLEXIBLE CONTACTS & SOCIALS (Rendered in About & Contact) ---- */
+    let socialItems = [];
+    if (Array.isArray(data.socialLinks) && data.socialLinks.length > 0) {
+        socialItems = data.socialLinks;
+    } else {
+        // Fallback to legacy fields
+        if (data.github) socialItems.push({ platform: 'github', label: 'GitHub', url: data.github });
+        if (data.linkedin) socialItems.push({ platform: 'linkedin', label: 'LinkedIn', url: data.linkedin });
+        if (data.twitter) socialItems.push({ platform: 'twitter', label: 'Twitter / X', url: data.twitter });
+        if (data.devto) socialItems.push({ platform: 'devto', label: 'Dev.to', url: data.devto });
+        if (data.email) socialItems.push({ platform: 'email', label: 'Email', url: `mailto:${data.email}` });
+    }
+
+    const activeSocials = socialItems.filter(item => item && item.url && item.url.trim() && item.url.trim() !== '#');
+
+    // 1. Render in About section pills
+    const aboutContactsWrapper = document.getElementById('about-contacts-wrapper');
+    const aboutContactsPills = document.getElementById('about-contacts-pills');
+    if (aboutContactsWrapper && aboutContactsPills) {
+        if (activeSocials.length > 0) {
+            aboutContactsWrapper.style.display = 'flex';
+            aboutContactsPills.innerHTML = activeSocials.map(item => {
+                const href = item.url.trim();
+                const isMail = href.startsWith('mailto:') || href.startsWith('tel:');
+                const target = isMail ? '' : 'target="_blank" rel="noopener noreferrer"';
+                return `
+                <a href="${escapeHtml(href)}" ${target} class="about-contact-pill" title="${escapeHtml(item.label || item.platform)}">
+                    ${getSocialIcon(item.platform || item.label)}
+                    <span>${escapeHtml(item.label || item.platform)}</span>
+                </a>`;
+            }).join('');
+        } else {
+            aboutContactsWrapper.style.display = 'none';
+        }
+    }
+
+    // 2. Render in Contact section social links
+    const socialLinksContainer = document.getElementById('social-links-container');
+    if (socialLinksContainer) {
+        if (activeSocials.length > 0) {
+            socialLinksContainer.style.display = 'flex';
+            socialLinksContainer.innerHTML = activeSocials.map(item => {
+                const href = item.url.trim();
+                const isMail = href.startsWith('mailto:') || href.startsWith('tel:');
+                const target = isMail ? '' : 'target="_blank" rel="noopener noreferrer"';
+                return `
+                <a href="${escapeHtml(href)}" ${target} class="social-link" title="${escapeHtml(item.label || item.platform)}" aria-label="${escapeHtml(item.label || item.platform)}">
+                    ${getSocialIcon(item.platform || item.label)}
+                </a>`;
+            }).join('');
+        } else {
+            socialLinksContainer.style.display = 'none';
+        }
+    }
+
+    // Legacy element IDs update (fallback)
     const updateSocial = (id, url) => {
         const el = document.getElementById(id);
         if (!el) return;
