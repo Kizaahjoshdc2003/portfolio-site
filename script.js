@@ -156,7 +156,7 @@ function highlightCode(rawCode) {
 async function applyAdminData() {
     let data;
     try {
-        const res = await fetch('data.json?_t=' + Date.now()); // cache-bust
+        const res = await fetch('/data.json?_t=' + Date.now()); // cache-bust
         if (!res.ok) return;
         data = await res.json();
     } catch (e) { 

@@ -2,7 +2,7 @@
    ADMIN — Dynamic Portfolio Editor & Flexibility Manager
    ========================================================================== */
 
-const DATA_URL = 'data.json';
+const DATA_URL = '/data.json';
 const SAVE_URL = '/api/save';
 
 // Default data baseline

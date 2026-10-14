@@ -1,9 +1,0 @@
-{
-  "name": "portfolio-site",
-  "version": "1.0.0",
-  "description": "Architectural Monochrome Portfolio",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
-  }
-}
